@@ -142,6 +142,12 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
+    public Recipe addCategory(Category category) {
+        this.categories.add(category);
+        category.getRecipes().add(this);
+        return this;
+    }
+
     public Set<Category> getCategories() {
         return categories;
     }

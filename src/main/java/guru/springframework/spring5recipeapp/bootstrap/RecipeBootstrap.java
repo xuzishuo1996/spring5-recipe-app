@@ -135,8 +135,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacRecipe.addIngredient(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom));
         guacRecipe.addIngredient(new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(".5"), eachUom));
 
-        guacRecipe.getCategories().add(americanCategory);
-        guacRecipe.getCategories().add(mexicanCategory);
+        guacRecipe.addCategory(americanCategory);
+        guacRecipe.addCategory(mexicanCategory);
 
         //add to return list
         recipes.add(guacRecipe);
@@ -193,10 +193,24 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         tacosRecipe.addIngredient(new Ingredient("cup sour cream thinned with 1/4 cup milk", new BigDecimal(4), cupsUom));
         tacosRecipe.addIngredient(new Ingredient("lime, cut into wedges", new BigDecimal(4), eachUom));
 
-        tacosRecipe.getCategories().add(americanCategory);
-        tacosRecipe.getCategories().add(mexicanCategory);
+        tacosRecipe.addCategory(americanCategory);
+        tacosRecipe.addCategory(mexicanCategory);
 
         recipes.add(tacosRecipe);
+
+//        var iter1 = americanCategory.getRecipes().iterator();
+//        var iter2 = mexicanCategory.getRecipes().iterator();
+//        var iter3 = guacRecipe.getCategories().iterator();
+//        var iter4 = tacosRecipe.getCategories().iterator();
+//        System.out.println("American Category's recipe 1: "  + iter1.next().getDescription());
+//        System.out.println("American Category's recipe 2: "  + iter1.next().getDescription());
+//        System.out.println("Mexican Category's recipe 1: "  + iter2.next().getDescription());
+//        System.out.println("Mexican Category's recipe 2: "  + iter2.next().getDescription());
+//        System.out.println("guacRecipe's category 1: "  + iter3.next().getDescription());
+//        System.out.println("guacRecipe's category 2: "  + iter3.next().getDescription());
+//        System.out.println("tacosRecipe's category 1: "  + iter4.next().getDescription());
+//        System.out.println("tacosRecipe's category 2: "  + iter4.next().getDescription());
+
         return recipes;
     }
 }
