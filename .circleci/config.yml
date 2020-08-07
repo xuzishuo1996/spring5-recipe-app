@@ -36,5 +36,5 @@ jobs:
             - ~/.m2
           key: spring5-recipe-app-{{ checksum "pom.xml" }}
 
-      # run the actual tests
-      - run: mvn package
+      # run unit tests and integration tests
+      - run: mvn integration-test
