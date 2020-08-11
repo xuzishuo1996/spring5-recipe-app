@@ -39,6 +39,22 @@ class RecipeServiceImplTest {
     }
 
     @Test
+    void getRecipeByIdTest() {
+
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(1L);
+
+        assertNotNull("Null recipe returned", recipeReturned);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
+    }
+
+    @Test
     public void getRecipeCommandByIdTest() {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
@@ -75,18 +91,17 @@ class RecipeServiceImplTest {
     }
 
     @Test
-    void findByIdTest() {
+    void testDeleteById() {
 
-        Recipe recipe = new Recipe();
-        recipe.setId(1L);
-        Optional<Recipe> recipeOptional = Optional.of(recipe);
+        //given
+        Long idToDelete = Long.valueOf(2L);
 
-        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+        //when
+        recipeService.deleteById(idToDelete);
 
-        Recipe recipeReturned = recipeService.findById(1L);
+        //no 'when', since method has void return type
 
-        assertNotNull("Null recipe returned", recipeReturned);
-        verify(recipeRepository, times(1)).findById(anyLong());
-        verify(recipeRepository, never()).findAll();
+        //then
+        verify(recipeRepository, times(1)).deleteById(anyLong());
     }
 }
