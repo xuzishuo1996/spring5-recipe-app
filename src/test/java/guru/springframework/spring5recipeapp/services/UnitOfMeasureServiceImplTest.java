@@ -24,14 +24,14 @@ public class UnitOfMeasureServiceImplTest {
     UnitOfMeasureRepository unitOfMeasureRepository;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() {
         MockitoAnnotations.initMocks(this);
 
         service = new UnitOfMeasureServiceImpl(unitOfMeasureRepository, unitOfMeasureToUnitOfMeasureCommand);
     }
 
     @Test
-    public void listAllUoms() throws Exception {
+    void listAllUoms() {
         //given
         Set<UnitOfMeasure> unitOfMeasures = new HashSet<>();
         UnitOfMeasure uom1 = new UnitOfMeasure();
@@ -51,5 +51,4 @@ public class UnitOfMeasureServiceImplTest {
         assertEquals(2, commands.size());
         verify(unitOfMeasureRepository, times(1)).findAll();
     }
-
 }
