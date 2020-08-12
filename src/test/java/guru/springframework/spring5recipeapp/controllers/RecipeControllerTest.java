@@ -107,6 +107,7 @@ class RecipeControllerTest {
         mockMvc.perform(post("/recipe")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("id", "")    //lack @NotBlank field description and directions
+                .param("cookTime", "3000")
         )
                 .andExpect(status().isOk());    //validation fails, so it does not redirect
     }
